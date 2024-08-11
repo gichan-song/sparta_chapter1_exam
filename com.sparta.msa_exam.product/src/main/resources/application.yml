@@ -13,6 +13,12 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      username: default
+      password: systempass
 server:
   port: 19093
 eureka:

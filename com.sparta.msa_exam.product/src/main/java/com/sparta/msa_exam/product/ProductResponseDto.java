@@ -1,6 +1,8 @@
 package com.sparta.msa_exam.product;
 
-public class ProductResponseDto {
+import java.io.Serializable;
+
+public class ProductResponseDto implements Serializable {
     public Long product_id;
 
     public String name;
