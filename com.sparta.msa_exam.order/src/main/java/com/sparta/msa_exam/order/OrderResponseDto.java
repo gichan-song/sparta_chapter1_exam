@@ -1,11 +1,17 @@
 package com.sparta.msa_exam.order;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OrderResponseDto {
     public Long order_id;
-    public String name;
+    public List<Long>  product_ids = new ArrayList<>();
 
     OrderResponseDto(Order order) {
         this.order_id = order.getOrder_id();
-        this.name = order.getName();
+    }
+    OrderResponseDto(Long orderId, List<Long> productIds) {
+        this.order_id = orderId;
+        this.product_ids = productIds;
     }
 }

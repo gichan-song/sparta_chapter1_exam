@@ -3,6 +3,9 @@ package com.sparta.msa_exam.order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class OrderService {
@@ -31,5 +34,16 @@ public class OrderService {
         orderMappedProductRepository.save(orderMappedProduct);
         orderRepository.save(order);
         return new OrderMappedProductResponseDto(order);
+    }
+
+    public OrderResponseDto getOrder(Long orderId) {
+        Order order = orderRepository.findById(orderId).orElse(null);
+        List<OrderMappedProduct> productList = orderMappedProductRepository.findAllByOrder(order);
+        List<Long> productIdList = new ArrayList<>();
+        for (OrderMappedProduct product : productList) {
+            productIdList.add(product.getProduct_id());
+        }
+        return new OrderResponseDto(orderId, productIdList);
+
     }
 }

@@ -20,4 +20,8 @@ public class OrderController {
             @RequestBody OrderMappedProductRequestDto requestDto) {
         return orderService.addProduct(orderId, requestDto);
     }
+    @GetMapping("/order/{orderId}")
+    public OrderResponseDto getOrder(@PathVariable("orderId") Long orderId) {
+        return orderService.getOrder(orderId);
+    }
 }
