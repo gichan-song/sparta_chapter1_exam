@@ -1,9 +1,10 @@
 package com.sparta.msa_exam.order;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderResponseDto {
+public class OrderResponseDto implements Serializable {
     public Long order_id;
     public List<Long>  product_ids = new ArrayList<>();
 

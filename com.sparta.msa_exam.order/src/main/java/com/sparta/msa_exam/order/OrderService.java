@@ -1,6 +1,7 @@
 package com.sparta.msa_exam.order;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class OrderService {
         return new OrderMappedProductResponseDto(order);
     }
 
+    @Cacheable(cacheNames = "orderId", key = "args[0]")
     public OrderResponseDto getOrder(Long orderId) {
         Order order = orderRepository.findById(orderId).orElse(null);
         List<OrderMappedProduct> productList = orderMappedProductRepository.findAllByOrder(order);
