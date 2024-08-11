@@ -1,9 +1,7 @@
 package com.sparta.msa_exam.order;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -14,5 +12,12 @@ public class OrderController {
     @PostMapping("/order")
     public OrderResponseDto createOrder(@RequestBody OrderRequestDto requestDto) {
         return orderService.createOrder(requestDto);
+    }
+
+    @PutMapping("/order/{orderId}")
+    public OrderMappedProductResponseDto addProduct(
+            @PathVariable("orderId") Long orderId,
+            @RequestBody OrderMappedProductRequestDto requestDto) {
+        return orderService.addProduct(orderId, requestDto);
     }
 }

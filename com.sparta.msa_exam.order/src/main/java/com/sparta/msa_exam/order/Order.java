@@ -26,4 +26,9 @@ public class Order {
     Order(OrderRequestDto requestDto) {
         this.name = requestDto.getName();
     }
+
+    public void addProduct(OrderMappedProduct product) {
+        this.product_ids.add(product);
+        product.setOrder(this);
+    }
 }

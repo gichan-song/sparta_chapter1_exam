@@ -1,10 +1,7 @@
 package com.sparta.msa_exam.product;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +19,10 @@ public class ProductController {
     @GetMapping("/products")
     public List<ProductResponseDto> getAllProducts() {
         return productService.getAllProducts();
+    }
+
+    @GetMapping("/products/{productId}")
+    public Boolean isProductExist(@PathVariable Long productId) {
+        return productService.isProductExist(productId);
     }
 }

@@ -26,4 +26,8 @@ public class ProductService {
         }
         return response;
     }
+
+    public Boolean isProductExist(Long productId) {
+        return productRepository.existsById(productId);
+    }
 }
